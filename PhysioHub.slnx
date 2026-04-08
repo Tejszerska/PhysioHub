@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="PhysioHub.Intranet/PhysioHub.Intranet.csproj" />
+  <Project Path="PhysioHub.Web/PhysioHub.Web.csproj" />
+</Solution>
