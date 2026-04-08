@@ -27,6 +27,9 @@ namespace PhysioHub.Intranet.Models.People
         [Display(Name = "Specialization")]
         public required int SpecializationId { get; set; }
 
+        [Display(Name = "Therapist's portrait")]
+        public string? PhotoLink { get; set; }
+
         [ForeignKey(nameof(SpecializationId))]
         public Specialization? Specialization { get; set; }
 

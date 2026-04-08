@@ -16,6 +16,6 @@ namespace PhysioHub.Intranet.Models.Dictionaries
         [Display(Name = "Type (e.g., Wet, Dry, Gym)")]
         public required string Type { get; set; }
 
-        public ICollection<AppointmentSchedule>? Appointments { get; set; } =new List<AppointmentSchedule>();
+        public ICollection<AppointmentSchedule>? Appointments { get; set; } = new List<AppointmentSchedule>();
     }
 }
