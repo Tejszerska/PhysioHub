@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using PhysioHub.Intranet.Data;
-using PhysioHub.Intranet.Models.People;
+using PhysioHub.Data.Data;
+using PhysioHub.Data.Data.People;
 
 namespace PhysioHub.Intranet.Controllers.People
 {

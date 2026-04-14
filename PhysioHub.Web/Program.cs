@@ -1,4 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using PhysioHub.Data.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<PhysioHubContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("PhysioHubContext")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

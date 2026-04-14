@@ -1,8 +1,8 @@
-﻿using PhysioHub.Intranet.Models.Base;
-using PhysioHub.Intranet.Models.Scheduling;
+﻿using PhysioHub.Data.Data.Base;
+using PhysioHub.Data.Data.Scheduling;
 using System.ComponentModel.DataAnnotations;
 
-namespace PhysioHub.Intranet.Models.Dictionaries
+namespace PhysioHub.Data.Data.Dictionaries
 {
     public class RehabRoom : BaseEntity
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PhysioHub.Intranet.Data;
-using PhysioHub.Intranet.Models.CMS;
+using PhysioHub.Data.Data;
+using PhysioHub.Data.Data.CMS;
 
 namespace PhysioHub.Intranet.Controllers.CMS
 {

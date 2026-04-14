@@ -1,8 +1,8 @@
-﻿using PhysioHub.Intranet.Models.Base;
+﻿using PhysioHub.Data.Data.Base;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PhysioHub.Intranet.Models.CMS
+namespace PhysioHub.Data.Data.CMS
 {
     public class Article : BaseEntity
     {

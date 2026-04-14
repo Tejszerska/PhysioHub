@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PhysioHub.Intranet.Models.Base
+namespace PhysioHub.Data.Data.Base
 {
     public abstract class BaseEntity
     {

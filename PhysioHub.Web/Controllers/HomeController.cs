@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using PhysioHub.Data.Data;
 using PhysioHub.Web.Models;
 using System.Diagnostics;
 
@@ -6,9 +7,24 @@ namespace PhysioHub.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly PhysioHubContext _context;
+
+        public HomeController(PhysioHubContext context)
         {
-            return View();
+            _context = context;
+        }
+        public async Task<IActionResult> Index(int? id)
+        {
+            ViewBag.WebsiteModel=
+                (
+                from website in _context.Website
+                orderby website.Position
+                select website
+                ).ToList();
+
+            if (id == null) id = 1; 
+            var item= await _context.Website.FindAsync(id);
+            return View(item);
         }
 
         public IActionResult Privacy()

@@ -1,8 +1,8 @@
-﻿using PhysioHub.Intranet.Models.Base;
-using PhysioHub.Intranet.Models.People;
+﻿using PhysioHub.Data.Data.Base;
+using PhysioHub.Data.Data.People;
 using System.ComponentModel.DataAnnotations;
 
-namespace PhysioHub.Intranet.Models.Dictionaries
+namespace PhysioHub.Data.Data.Dictionaries
 {
     public class Specialization : BaseEntity
     {

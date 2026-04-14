@@ -1,7 +1,7 @@
-﻿using PhysioHub.Intranet.Models.Base;
+﻿using PhysioHub.Data.Data.Base;
 using System.ComponentModel.DataAnnotations;
 
-namespace PhysioHub.Intranet.Models.Scheduling
+namespace PhysioHub.Data.Data.Scheduling
 {
     public class Stay : BaseEntity
     {

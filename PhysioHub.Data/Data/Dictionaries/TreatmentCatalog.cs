@@ -1,9 +1,10 @@
-﻿using PhysioHub.Intranet.Models.Base;
-using PhysioHub.Intranet.Models.Scheduling;
+﻿
+using PhysioHub.Data.Data.Base;
+using PhysioHub.Data.Data.Scheduling;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PhysioHub.Intranet.Models.Dictionaries
+namespace PhysioHub.Data.Data.Dictionaries
 {
     public class TreatmentCatalog : BaseEntity
     {

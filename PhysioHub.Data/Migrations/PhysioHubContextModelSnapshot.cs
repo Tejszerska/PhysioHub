@@ -3,29 +3,26 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using PhysioHub.Intranet.Data;
+using PhysioHub.Data.Data;
 
 #nullable disable
 
-namespace PhysioHub.Intranet.Migrations
+namespace PhysioHub.Data.Migrations
 {
     [DbContext(typeof(PhysioHubContext))]
-    [Migration("20260408174337_InitialCreate")]
-    partial class InitialCreate
+    partial class PhysioHubContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.2")
+                .HasAnnotation("ProductVersion", "10.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("PhysioHub.Intranet.Models.CMS.Article", b =>
+            modelBuilder.Entity("PhysioHub.Data.Data.CMS.Article", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -64,7 +61,7 @@ namespace PhysioHub.Intranet.Migrations
                     b.ToTable("Article");
                 });
 
-            modelBuilder.Entity("PhysioHub.Intranet.Models.CMS.Website", b =>
+            modelBuilder.Entity("PhysioHub.Data.Data.CMS.Website", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -103,7 +100,7 @@ namespace PhysioHub.Intranet.Migrations
                     b.ToTable("Website");
                 });
 
-            modelBuilder.Entity("PhysioHub.Intranet.Models.Dictionaries.RehabRoom", b =>
+            modelBuilder.Entity("PhysioHub.Data.Data.Dictionaries.RehabRoom", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -135,7 +132,7 @@ namespace PhysioHub.Intranet.Migrations
                     b.ToTable("RehabRoom");
                 });
 
-            modelBuilder.Entity("PhysioHub.Intranet.Models.Dictionaries.Specialization", b =>
+            modelBuilder.Entity("PhysioHub.Data.Data.Dictionaries.Specialization", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -162,7 +159,7 @@ namespace PhysioHub.Intranet.Migrations
                     b.ToTable("Specialization");
                 });
 
-            modelBuilder.Entity("PhysioHub.Intranet.Models.Dictionaries.TreatmentCatalog", b =>
+            modelBuilder.Entity("PhysioHub.Data.Data.Dictionaries.TreatmentCatalog", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -195,7 +192,7 @@ namespace PhysioHub.Intranet.Migrations
                     b.ToTable("TreatmentCatalog");
                 });
 
-            modelBuilder.Entity("PhysioHub.Intranet.Models.People.Patient", b =>
+            modelBuilder.Entity("PhysioHub.Data.Data.People.Patient", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -236,7 +233,7 @@ namespace PhysioHub.Intranet.Migrations
                     b.ToTable("Patient");
                 });
 
-            modelBuilder.Entity("PhysioHub.Intranet.Models.People.Therapist", b =>
+            modelBuilder.Entity("PhysioHub.Data.Data.People.Therapist", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -281,7 +278,7 @@ namespace PhysioHub.Intranet.Migrations
                     b.ToTable("Therapist");
                 });
 
-            modelBuilder.Entity("PhysioHub.Intranet.Models.Scheduling.AppointmentSchedule", b =>
+            modelBuilder.Entity("PhysioHub.Data.Data.Scheduling.AppointmentSchedule", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -336,7 +333,7 @@ namespace PhysioHub.Intranet.Migrations
                     b.ToTable("AppointmentSchedule");
                 });
 
-            modelBuilder.Entity("PhysioHub.Intranet.Models.Scheduling.Stay", b =>
+            modelBuilder.Entity("PhysioHub.Data.Data.Scheduling.Stay", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -369,7 +366,7 @@ namespace PhysioHub.Intranet.Migrations
                     b.ToTable("Stay");
                 });
 
-            modelBuilder.Entity("PhysioHub.Intranet.Models.Scheduling.StayParticipation", b =>
+            modelBuilder.Entity("PhysioHub.Data.Data.Scheduling.StayParticipation", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -401,9 +398,9 @@ namespace PhysioHub.Intranet.Migrations
                     b.ToTable("StayParticipation");
                 });
 
-            modelBuilder.Entity("PhysioHub.Intranet.Models.People.Therapist", b =>
+            modelBuilder.Entity("PhysioHub.Data.Data.People.Therapist", b =>
                 {
-                    b.HasOne("PhysioHub.Intranet.Models.Dictionaries.Specialization", "Specialization")
+                    b.HasOne("PhysioHub.Data.Data.Dictionaries.Specialization", "Specialization")
                         .WithMany("Therapists")
                         .HasForeignKey("SpecializationId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -412,31 +409,31 @@ namespace PhysioHub.Intranet.Migrations
                     b.Navigation("Specialization");
                 });
 
-            modelBuilder.Entity("PhysioHub.Intranet.Models.Scheduling.AppointmentSchedule", b =>
+            modelBuilder.Entity("PhysioHub.Data.Data.Scheduling.AppointmentSchedule", b =>
                 {
-                    b.HasOne("PhysioHub.Intranet.Models.People.Patient", "Patient")
+                    b.HasOne("PhysioHub.Data.Data.People.Patient", "Patient")
                         .WithMany("Appointments")
                         .HasForeignKey("PatientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PhysioHub.Intranet.Models.Dictionaries.RehabRoom", "Room")
+                    b.HasOne("PhysioHub.Data.Data.Dictionaries.RehabRoom", "Room")
                         .WithMany("Appointments")
                         .HasForeignKey("RoomId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PhysioHub.Intranet.Models.Scheduling.StayParticipation", "StayParticipation")
+                    b.HasOne("PhysioHub.Data.Data.Scheduling.StayParticipation", "StayParticipation")
                         .WithMany()
                         .HasForeignKey("StayParticipationId");
 
-                    b.HasOne("PhysioHub.Intranet.Models.People.Therapist", "Therapist")
+                    b.HasOne("PhysioHub.Data.Data.People.Therapist", "Therapist")
                         .WithMany("Appointments")
                         .HasForeignKey("TherapistId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PhysioHub.Intranet.Models.Dictionaries.TreatmentCatalog", "Treatment")
+                    b.HasOne("PhysioHub.Data.Data.Dictionaries.TreatmentCatalog", "Treatment")
                         .WithMany("Appointments")
                         .HasForeignKey("TreatmentId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -453,15 +450,15 @@ namespace PhysioHub.Intranet.Migrations
                     b.Navigation("Treatment");
                 });
 
-            modelBuilder.Entity("PhysioHub.Intranet.Models.Scheduling.StayParticipation", b =>
+            modelBuilder.Entity("PhysioHub.Data.Data.Scheduling.StayParticipation", b =>
                 {
-                    b.HasOne("PhysioHub.Intranet.Models.People.Patient", "Patient")
+                    b.HasOne("PhysioHub.Data.Data.People.Patient", "Patient")
                         .WithMany("StayParticipations")
                         .HasForeignKey("PatientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PhysioHub.Intranet.Models.Scheduling.Stay", "Stay")
+                    b.HasOne("PhysioHub.Data.Data.Scheduling.Stay", "Stay")
                         .WithMany("StayParticipations")
                         .HasForeignKey("StayId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -472,34 +469,34 @@ namespace PhysioHub.Intranet.Migrations
                     b.Navigation("Stay");
                 });
 
-            modelBuilder.Entity("PhysioHub.Intranet.Models.Dictionaries.RehabRoom", b =>
+            modelBuilder.Entity("PhysioHub.Data.Data.Dictionaries.RehabRoom", b =>
                 {
                     b.Navigation("Appointments");
                 });
 
-            modelBuilder.Entity("PhysioHub.Intranet.Models.Dictionaries.Specialization", b =>
+            modelBuilder.Entity("PhysioHub.Data.Data.Dictionaries.Specialization", b =>
                 {
                     b.Navigation("Therapists");
                 });
 
-            modelBuilder.Entity("PhysioHub.Intranet.Models.Dictionaries.TreatmentCatalog", b =>
+            modelBuilder.Entity("PhysioHub.Data.Data.Dictionaries.TreatmentCatalog", b =>
                 {
                     b.Navigation("Appointments");
                 });
 
-            modelBuilder.Entity("PhysioHub.Intranet.Models.People.Patient", b =>
+            modelBuilder.Entity("PhysioHub.Data.Data.People.Patient", b =>
                 {
                     b.Navigation("Appointments");
 
                     b.Navigation("StayParticipations");
                 });
 
-            modelBuilder.Entity("PhysioHub.Intranet.Models.People.Therapist", b =>
+            modelBuilder.Entity("PhysioHub.Data.Data.People.Therapist", b =>
                 {
                     b.Navigation("Appointments");
                 });
 
-            modelBuilder.Entity("PhysioHub.Intranet.Models.Scheduling.Stay", b =>
+            modelBuilder.Entity("PhysioHub.Data.Data.Scheduling.Stay", b =>
                 {
                     b.Navigation("StayParticipations");
                 });

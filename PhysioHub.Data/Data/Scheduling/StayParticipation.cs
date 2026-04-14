@@ -1,9 +1,10 @@
-﻿using PhysioHub.Intranet.Models.Base;
-using PhysioHub.Intranet.Models.People;
+﻿
+using PhysioHub.Data.Data.Base;
+using PhysioHub.Data.Data.People;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PhysioHub.Intranet.Models.Scheduling
+namespace PhysioHub.Data.Data.Scheduling
 {
     public class StayParticipation : BaseEntity
     {

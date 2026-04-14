@@ -1,8 +1,8 @@
-﻿using PhysioHub.Intranet.Models.Base;
+﻿using PhysioHub.Data.Data.Base;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PhysioHub.Intranet.Models.CMS
+namespace PhysioHub.Data.Data.CMS
 {
     // stores all websites with their content
     public class Website : BaseEntity

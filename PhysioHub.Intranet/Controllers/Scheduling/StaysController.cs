@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PhysioHub.Intranet.Data;
-using PhysioHub.Intranet.Models.Scheduling;
+using PhysioHub.Data.Data;
+using PhysioHub.Data.Data.Scheduling;
 
 namespace PhysioHub.Intranet.Controllers.Scheduling
 {

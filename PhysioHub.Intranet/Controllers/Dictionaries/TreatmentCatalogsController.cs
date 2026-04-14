@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PhysioHub.Intranet.Data;
-using PhysioHub.Intranet.Models.Dictionaries;
+using PhysioHub.Data.Data;
+using PhysioHub.Data.Data.Dictionaries;
 
 namespace PhysioHub.Intranet.Controllers.Dictionaries
 {
