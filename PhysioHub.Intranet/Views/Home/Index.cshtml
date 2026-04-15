@@ -1,8 +1,108 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model PhysioHub.Intranet.Models.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row mb-4 mt-2">
+
+
+    @* Date *@
+    <div class="col-md-3 mb-3 text-center">
+        <div class="card physio-card physio-bg-alt h-100 shadow-sm border-0">
+            <div class="card-body">
+                <h6 class="text-muted text-uppercase small mb-2">Today is</h6>
+                <h2 class="physio-text-primary mb-0">@DateTime.Today.ToString("dddd, dd MMMM")</h2>
+            </div>
+        </div>
+    </div>
+    
+    @* Patients *@
+    <div class="col-md-3 mb-3 text-center">
+        <div class="card physio-card physio-bg-alt h-100 shadow-sm border-0">
+            <div class="card-body">
+                <h6 class="text-muted text-uppercase small mb-2">Patients enrolled</h6>
+                <h2 class="physio-text-primary mb-0">@Model.ActivePatientsCount</h2>
+            </div>
+        </div>
+    </div>
+    
+    @* Current Stay *@
+    <div class="col-md-3 mb-3 text-center">
+        <div class="card physio-card h-100 shadow-sm border-0">
+            <div class="card-body">
+                
+                @if (Model.CurrentStay != null)
+                {<h6 class="text-muted text-uppercase small mb-2">Current Stay : 
+                        @Model.CurrentStay.StartDate.ToShortDateString() - @Model.CurrentStay.EndDate.ToShortDateString()
+                </h6>
+                    <span class="text-muted small mb-0"></span>
+
+                    <h2 class="physio-text-primary mb-0">@Model.CurrentStay.Name</h2>
+                }
+                else
+                {
+                    <h6 class="text-muted mb-0">No active stay</h6>
+                }
+            </div>
+        </div>
+    </div>
+        
+
+    @*  Treatments *@
+    <div class="col-md-3 mb-3 text-center">
+        <div class="card physio-card h-100 shadow-sm border-0">
+            <div class="card-body">
+                <h6 class="text-muted text-uppercase small mb-2">Today's Treatments</h6>
+                <h2 class="physio-text-primary mb-0">@Model.TodaysTreatments.Count</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* Table *@
+<div class="card shadow-sm border-0">
+    
+    <div class="card-body p-0">
+        @if (Model.TodaysTreatments.Any())
+        {
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0 table-dash">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="ps-4">Time</th>
+                            <th>Patient</th>
+                            <th>Treatment</th>
+                            <th>Therapist</th>
+                            <th>Room</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.TodaysTreatments)
+                        {
+                            <tr>
+                                <td class="ps-4 fw-bold">@item.StartDateTime.ToString("HH:mm")</td>
+                                <td>@item.Patient?.FirstName @item.Patient?.LastName</td>
+                                <td>@item.Treatment?.Name</td>
+                                <td>@item.Therapist?.FirstName @item.Therapist?.LastName</td>
+                                <td><span class="badge bg-light text-dark border">@item.Room?.RoomNumber</span></td>
+                                <td>
+                                    <span class="badge @(item.Status == "Completed" ? "bg-success" : "bg-secondary")">
+                                        @item.Status
+                                    </span>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="text-center py-5">
+                <p class="text-muted mb-0">No treatments scheduled for today.</p>
+            </div>
+        }
+    </div>
 </div>

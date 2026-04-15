@@ -8,49 +8,88 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/PhysioHub.Intranet.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">PhysioHub.Intranet</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="RehabRooms" asp-action="Index">Rehabilitation Rooms</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Specializations" asp-action="Index">Specializations</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="TreatmentCatalogs" asp-action="Index">Treatment Catalog</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+        <nav class="navbar navbar-expand-lg navbar-dark physio-navbar border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/img/logo-admin.png" alt="PhysioHub Logo" height="40" class="me-2 d-inline-block align-top" onerror="this.style.display='none'"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+            
+                    <div class="navbar-collapse collapse d-lg-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Dashboard</a>
+                            </li>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - PhysioHub.Intranet - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarPatients" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Patients
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarPatients">
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Patients" asp-action="Index">View All Patients</a></li>
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Patients" asp-action="Create">Add Patient</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="StayParticipations" asp-action="Create">Assign Stay Participation</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarResources" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Resources
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarResources">
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Therapists" asp-action="Index">Therapists</a></li>
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="RehabRooms" asp-action="Index">Rehab Rooms</a></li>
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="TreatmentCatalogs" asp-action="Index">Treatments</a></li>
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Specializations" asp-action="Index">Specializations</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarScheduling" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Scheduling
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarScheduling">
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="AppointmentSchedules" asp-action="Index">Appointment Schedules</a></li>
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Stays" asp-action="Index">Stays</a></li>
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="StayParticipations" asp-action="Index">All Stay Participations</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarCMS" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Content Management
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarCMS">
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Articles" asp-action="Index">Articles</a></li>
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Websites" asp-action="Index">Websites</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="container flex-grow-1">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
+
+        <footer class="border-top physio-footer text-muted py-3 mt-auto">
+            <div class="container">
+                &copy; 2026 - PhysioHub.Intranet - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @await RenderSectionAsync("Scripts", required: false)
+    </body>
 </html>

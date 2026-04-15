@@ -23,5 +23,53 @@ namespace PhysioHub.Data.Data
         public DbSet<AppointmentSchedule> AppointmentSchedule { get; set; } = default!;
         public DbSet<Stay> Stay { get; set; } = default!;
         public DbSet<StayParticipation> StayParticipation { get; set; } = default!;
+
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+        {
+            // Pobierz WSZYSTKIE śledzone zmiany (bez odrzucania Deleted)
+            var entries = ChangeTracker.Entries();
+
+            foreach (var entityEntry in entries)
+            {
+                // set DateTime for update
+                if (entityEntry.Metadata.FindProperty("UpdatedAt") != null && entityEntry.State == EntityState.Modified)
+                {
+                    entityEntry.Property("UpdatedAt").CurrentValue = DateTime.Now;
+                }
+
+                // set DateTime for create
+                if (entityEntry.State == EntityState.Added)
+                {
+                    if (entityEntry.Metadata.FindProperty("CreatedAt") != null)
+                    {
+                        entityEntry.Property("CreatedAt").CurrentValue = DateTime.Now;
+                    }
+
+                    // set active when creating
+                    if (entityEntry.Metadata.FindProperty("IsActive") != null)
+                    {
+                        entityEntry.Property("IsActive").CurrentValue = true;
+                    }
+                }
+
+                // SOFT DELETE
+                if (entityEntry.State == EntityState.Deleted && entityEntry.Metadata.FindProperty("IsActive") != null)
+                {
+                    // blocks removing record from database
+                    entityEntry.State = EntityState.Modified;
+
+                    // set not active
+                    entityEntry.Property("IsActive").CurrentValue = false;
+
+                    // set modified time
+                    if (entityEntry.Metadata.FindProperty("UpdatedAt") != null)
+                        entityEntry.Property("UpdatedAt").CurrentValue = DateTime.Now;
+                }
+            }
+
+            return base.SaveChangesAsync(cancellationToken);
+        }
+
+
     }
 }

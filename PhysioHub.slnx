@@ -1,4 +1,8 @@
 <Solution>
+  <Project Path="../../../Users/48502/Desktop/p. internetowych aplikacji biznesowych KORNATKA/PhysiHubDB/PhysiHubDB.sqlproj" Id="e0955383-2ab3-43fe-8b57-1a7191f7c692">
+    <Build />
+    <Deploy />
+  </Project>
   <Project Path="PhysioHub.Data/PhysioHub.Data.csproj" Id="be17a5ae-a40d-4234-ad94-2ed7c0cf8ae7" />
   <Project Path="PhysioHub.Intranet/PhysioHub.Intranet.csproj" />
   <Project Path="PhysioHub.Web/PhysioHub.Web.csproj" />
