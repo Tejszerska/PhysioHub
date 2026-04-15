@@ -1,31 +1,252 @@
-html {
-  font-size: 14px;
+:root {
+    /* 
+        ==============
+        THEME COLORS 
+        ==============
+    */
+    /* Brand Colors */
+    --physio-primary: #314A2D;
+    --physio-primary-hover: #456640;
+    --physio-accent: #D4A373;
+    /* Background */
+    --physio-bg-main: #F8F9FA;
+    --physio-bg-alt: #fffcf2;
+    --physio-bg-white: #FFFFFF;
+    /* Text */
+    --physio-text-dark: #1B211A;
+    --physio-text-muted: #6B7269;
+    --physio-text-light: #FFFFFF;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+/* --- my default styles and some overriding default Bootstrap --- */
+
+/* 
+==============
+    NAVBAR
+==============
+*/
+
+.physio-navbar {
+    background-color: var(--physio-primary) !important;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    .physio-navbar .navbar-brand,
+    .physio-navbar .nav-link {
+        color: var(--physio-text-light) !important;
+    }
+
+        /* hover for navbar links */
+        .physio-navbar .nav-link:hover,
+        .physio-navbar .navbar-brand:hover {
+            color: var(--physio-accent) !important;
+        }
+
+/* dropdown Menu */
+.dropdown-menu {
+    border-color: var(--physio-primary);
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+.dropdown-item {
+    color: var(--physio-text-dark);
+}
+
+
+    /* dropdown hover */
+    .dropdown-item:hover, .dropdown-item:focus {
+        background-color: var(--physio-bg-alt);
+        color: var(--physio-primary);
+        font-weight: 500;
+    }
+
+/* 
+    ==============
+        Footer
+    ==============
+*/
+.physio-footer {
+    background-color: var(--physio-bg-alt);
+    color: var(--physio-text-dark) !important;
+    position: static !important;
+    width: 100%;
+}
+
+    .physio-footer a {
+        color: var(--physio-primary);
+        text-decoration: none;
+    }
+
+        .physio-footer a:hover {
+            color: var(--physio-primary-hover);
+            text-decoration: underline;
+        }
+
+/* 
+    ==============
+        flexbox
+    ==============
+*/
+html, body {
+    min-height: 100vh;
+    margin: 0;
 }
 
 body {
-  margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+
+/* 
+    ==============
+        Links
+    ==============
+*/
+a {
+    color: var(--physio-primary);
+    transition: color 0.2s ease-in-out;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+    a:hover, a:focus {
+        color: var(--physio-accent);
+        text-decoration: underline;
+    }
+
+/* 
+     ==============
+         Buttons
+     ==============
+ */
+.btn-primary {
+    background-color: var(--physio-primary);
+    border-color: var(--physio-primary);
+    color: var(--physio-text-light);
+    transition: all 0.2s ease-in-out;
 }
+
+    .btn-primary:hover,
+    .btn-primary:focus,
+    .btn-primary:active {
+        background-color: var(--physio-primary-hover) !important;
+        border-color: var(--physio-primary-hover) !important;
+        color: var(--physio-text-light) !important;
+    }
+
+.btn-secondary {
+    background-color: var(--physio-bg-alt);
+    border-color: var(--physio-accent);
+    color: var(--physio-text-dark);
+}
+
+    .btn-secondary:hover {
+        background-color: var(--physio-accent);
+        color: var(--physio-text-light);
+    }
+
+
+/* 
+     ==============
+         Form
+     ==============
+ */
+.form-control {
+    margin-bottom: 10px;
+}
+
+/* =============
+     DASHBOARD 
+   ============= */
+
+.physio-text-primary {
+    color: var(--physio-primary) !important;
+}
+
+.physio-card {
+    border-radius: 10px;
+    background-color: var(--physio-bg-alt) !important;
+}
+
+/* TABLE (only dashboard) */
+
+.table-dash {
+    border: 1px solid var(--physio-bg-alt);
+}
+
+    .table-dash thead th {
+        background-color: var(--physio-bg-alt) !important;
+        border-bottom: 2px solid var(--physio-primary);
+        color: var(--physio-text-dark);
+    }
+
+/*
+    ===========================
+    ===========================
+    --- WEB PORTAL SPECIFIC ---
+    ===========================    
+    ===========================
+*/
+
+/* Hero  */
+.hero-section {
+    position: relative;
+    height: 60vh;
+    min-height: 400px;
+    background: url('/img/hero.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(49, 74, 45, 0.9) 0%, rgba(49, 74, 45, 0) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px; 
+    margin-left: 0; 
+    padding-left: 15px;
+}
+
+/* Feature cards */
+.feature-box {
+    padding: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.feature-icon-circle {
+    width: 80px;
+    height: 80px;
+    background-color: var(--physio-bg-alt);
+    color: var(--physio-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 1.5rem;
+    border: 2px solid var(--physio-accent);
+}
+
+/* News Cards */
+
+.physio-bg-alt {
+    background-color: var(--physio-bg-alt) !important;
+}
+.news-card {
+    border: none;
+    border-bottom: 4px solid var(--physio-accent);
+}
+
+.news-date {
+    color: var(--physio-accent);
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
