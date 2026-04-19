@@ -17,7 +17,8 @@ namespace PhysioHub.Intranet.Controllers.Scheduling
         // GET: Stays
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Stay.ToListAsync());
+            return View(await _context.Stay.Where(p => p.IsActive == true)
+                                   .ToListAsync());
         }
 
         // GET: Stays/Details/5

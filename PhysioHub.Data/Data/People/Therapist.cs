@@ -35,5 +35,7 @@ namespace PhysioHub.Data.Data.People
         public Specialization? Specialization { get; set; }
 
         public ICollection<AppointmentSchedule>? Appointments { get; set; } = new List<AppointmentSchedule>();
+
+        public string FullName => $"{FirstName} {LastName}";
     }
 }

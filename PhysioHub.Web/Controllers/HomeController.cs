@@ -32,6 +32,24 @@ namespace PhysioHub.Web.Controllers
             return View();
         }
 
+        // ========= for 1st laboratory ===========
+        public IActionResult Offer()
+        {
+            return View();
+        }
+
+        public IActionResult OurTeam()
+        {
+            return View();
+        }
+
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

@@ -22,8 +22,29 @@
                             aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    @await Html.PartialAsync("NavbarLinks", (IEnumerable<PhysioHub.Data.Data.CMS.Website>)ViewBag.WebsiteModel)
-                </div>
+@*                       @await Html.PartialAsync("NavbarLinks", (IEnumerable<PhysioHub.Data.Data.CMS.Website>)ViewBag.WebsiteModel) 
+ *@                
+                    <div class="navbar-collapse collapse d-lg-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Offer">
+                           Offer
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="OurTeam">
+                            Our Team
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contact">
+                            Contact
+                        </a>
+                    </li>
+                    </ul>
+                    </div>
+</div>
             </nav>
         </header>
             
@@ -33,16 +54,49 @@
         </main>
     </div>
 
-        <footer class="physio-footer py-3 mt-auto border-top text-center">
-            <a href="#">Offer</a> · <a>Price List</a> · <a>Our Team</a> · <a>News</a> · <a>Contact</a>
-            
+        <footer class="physio-bg-alt border-top mt-auto py-5">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <h5 class="physio-text-primary fw-bold mb-3">PhysioHub</h5>
+                        <p class="text-muted small">
+                            Professional rehabilitation and physiotherapy services.
+                            We help you regain mobility and live without pain.
+                        </p>
+                        <div class="d-flex gap-3">
+                            <a href="#" class="text-muted"><i class="bi bi-facebook fs-5"></i></a>
+                            <a href="#" class="text-muted"><i class="bi bi-instagram fs-5"></i></a>
+                            <a href="#" class="text-muted"><i class="bi bi-linkedin fs-5"></i></a>
+                        </div>
+                    </div>
 
+                    <div class="col-md-4">
+                        <h6 class="fw-bold mb-3 text-uppercase small">Quick Links</h6>
+                        <ul class="list-unstyled small">
+                            <li class="mb-2"><a asp-controller="Home" asp-action="Index" class="text-decoration-none text-muted">Home</a></li>
+                            <li class="mb-2"><a asp-controller="Home" asp-action="Offer" class="text-decoration-none text-muted">Our Offer</a></li>
+                            <li class="mb-2"><a asp-controller="Home" asp-action="Team" class="text-decoration-none text-muted">Our Team</a></li>
+                            <li class="mb-2"><a asp-controller="Home" asp-action="Privacy" class="text-decoration-none text-muted">Privacy Policy</a></li>
+                        </ul>
+                    </div>
 
+                    <div class="col-md-4">
+                        <h6 class="fw-bold mb-3 text-uppercase small">Contact</h6>
+                        <ul class="list-unstyled small text-muted">
+                            <li class="mb-2"><i class="bi bi-geo-alt me-2 text-primary"></i> 123 Health Street, Medical City</li>
+                            <li class="mb-2"><i class="bi bi-telephone me-2 text-primary"></i> +48 123 456 789</li>
+                            <li class="mb-2"><i class="bi bi-envelope me-2 text-primary"></i> contact@physiohub.com</li>
+                        </ul>
+                    </div>
+                </div>
 
-         <hr />
-                    <p class="text-muted small mb-1 mx-auto">
-                2026 PhysioHub
+                <div class="border-top mt-4 pt-4 text-center">
+                    <p class="text-muted small mb-0">
+                        &copy; @DateTime.Now.Year <span class="fw-bold">PhysioHub</span>. All rights reserved.
                     </p>
+                </div>
+            </div>
+        </footer>
          
         </footer>
 

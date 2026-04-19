@@ -17,7 +17,8 @@ namespace PhysioHub.Intranet.Controllers.CMS
         // GET: Articles
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Article.ToListAsync());
+            return View(await _context.Article.Where(p => p.IsActive == true)
+                                   .ToListAsync());
         }
 
         // GET: Articles/Details/5

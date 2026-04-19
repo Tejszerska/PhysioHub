@@ -1,6 +1,40 @@
 ﻿@{
     ViewData["Title"] = "Privacy Policy";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<section class="py-5">
+    <div class="container" style="max-width: 800px;">
+        <h1 class="physio-text-primary fw-bold mb-4">Privacy Policy</h1>
+        <p class="lead text-muted mb-5">Basic information on how we protect your data at PhysioHub.</p>
+
+        <div class="mb-5">
+            <h4 class="physio-text-primary fw-bold">1. Data Collection</h4>
+            <p>We collect only the necessary information to provide physiotherapy services, including your name, contact details, and medical history required for treatments.</p>
+        </div>
+
+        <div class="mb-5">
+            <h4 class="physio-text-primary fw-bold">2. Use of Information</h4>
+            <p>Your data is used solely for:</p>
+            <ul>
+                <li>Scheduling and managing appointments.</li>
+                <li>Creating personalized rehabilitation plans.</li>
+                <li>Contacting you regarding your health stay.</li>
+            </ul>
+        </div>
+
+        <div class="mb-5">
+            <h4 class="physio-text-primary fw-bold">3. Data Security</h4>
+            <p>All medical records are stored securely in our internal system (Intranet). Access is limited to authorized medical staff only. We do not share your data with third parties without your consent.</p>
+        </div>
+        <hr />
+
+        <div class="mb-5  physio-bg-alt rounded">
+            <h4 class="physio-text-primary fw-bold">Contact</h4>
+            <p class="mb-0">If you have any questions, visit us at our clinic or email us at: <strong>privacy@physiohub.com</strong></p>
+        </div>
+        
+        <a asp-controller="Home" asp-action="Index" class="btn btn-link ps-0 text-muted">
+            <i class="bi bi-arrow-left"></i> Return to Home
+        </a>
+    </div>
+</section>

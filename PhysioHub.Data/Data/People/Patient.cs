@@ -27,5 +27,7 @@ namespace PhysioHub.Data.Data.People
 
         public ICollection<StayParticipation>? StayParticipations { get; set; } = new List<StayParticipation>();
         public ICollection<AppointmentSchedule>? Appointments { get; set; } = new List<AppointmentSchedule>();
+
+        public string FullName => $"{FirstName} {LastName}";
     }
 }

@@ -19,7 +19,8 @@ namespace PhysioHub.Intranet.Controllers.Scheduling
         public async Task<IActionResult> Index()
         {
             var physioHubContext = _context.AppointmentSchedule.Include(a => a.Patient).Include(a => a.Room).Include(a => a.StayParticipation).Include(a => a.Therapist).Include(a => a.Treatment);
-            return View(await physioHubContext.ToListAsync());
+            return View(await physioHubContext.Where(p => p.IsActive == true)
+                                   .ToListAsync());
         }
 
         // GET: AppointmentSchedules/Details/5
@@ -48,10 +49,10 @@ namespace PhysioHub.Intranet.Controllers.Scheduling
         // GET: AppointmentSchedules/Create
         public IActionResult Create()
         {
-            ViewData["PatientId"] = new SelectList(_context.Patient, "Id", "FirstName");
+            ViewData["PatientId"] = new SelectList(_context.Patient, "Id", "FullName");
             ViewData["RoomId"] = new SelectList(_context.RehabRoom, "Id", "RoomNumber");
             ViewData["StayParticipationId"] = new SelectList(_context.Set<StayParticipation>(), "Id", "Id");
-            ViewData["TherapistId"] = new SelectList(_context.Therapist, "Id", "FirstName");
+            ViewData["TherapistId"] = new SelectList(_context.Therapist, "Id", "FullName");
             ViewData["TreatmentId"] = new SelectList(_context.TreatmentCatalog, "Id", "Name");
             return View();
         }
@@ -69,10 +70,10 @@ namespace PhysioHub.Intranet.Controllers.Scheduling
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PatientId"] = new SelectList(_context.Patient, "Id", "FirstName", appointmentSchedule.PatientId);
+            ViewData["PatientId"] = new SelectList(_context.Patient, "Id", "FullName    ", appointmentSchedule.PatientId);
             ViewData["RoomId"] = new SelectList(_context.RehabRoom, "Id", "RoomNumber", appointmentSchedule.RoomId);
             ViewData["StayParticipationId"] = new SelectList(_context.Set<StayParticipation>(), "Id", "Id", appointmentSchedule.StayParticipationId);
-            ViewData["TherapistId"] = new SelectList(_context.Therapist, "Id", "FirstName", appointmentSchedule.TherapistId);
+            ViewData["TherapistId"] = new SelectList(_context.Therapist, "Id", "FullName", appointmentSchedule.TherapistId);
             ViewData["TreatmentId"] = new SelectList(_context.TreatmentCatalog, "Id", "Name", appointmentSchedule.TreatmentId);
             return View(appointmentSchedule);
         }
@@ -90,10 +91,10 @@ namespace PhysioHub.Intranet.Controllers.Scheduling
             {
                 return NotFound();
             }
-            ViewData["PatientId"] = new SelectList(_context.Patient, "Id", "FirstName", appointmentSchedule.PatientId);
+            ViewData["PatientId"] = new SelectList(_context.Patient, "Id", "FullName", appointmentSchedule.PatientId);
             ViewData["RoomId"] = new SelectList(_context.RehabRoom, "Id", "RoomNumber", appointmentSchedule.RoomId);
             ViewData["StayParticipationId"] = new SelectList(_context.Set<StayParticipation>(), "Id", "Id", appointmentSchedule.StayParticipationId);
-            ViewData["TherapistId"] = new SelectList(_context.Therapist, "Id", "FirstName", appointmentSchedule.TherapistId);
+            ViewData["TherapistId"] = new SelectList(_context.Therapist, "Id", "FullName", appointmentSchedule.TherapistId);
             ViewData["TreatmentId"] = new SelectList(_context.TreatmentCatalog, "Id", "Name", appointmentSchedule.TreatmentId);
             return View(appointmentSchedule);
         }
@@ -130,10 +131,10 @@ namespace PhysioHub.Intranet.Controllers.Scheduling
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PatientId"] = new SelectList(_context.Patient, "Id", "FirstName", appointmentSchedule.PatientId);
+            ViewData["PatientId"] = new SelectList(_context.Patient, "Id", "FullName", appointmentSchedule.PatientId);
             ViewData["RoomId"] = new SelectList(_context.RehabRoom, "Id", "RoomNumber", appointmentSchedule.RoomId);
             ViewData["StayParticipationId"] = new SelectList(_context.Set<StayParticipation>(), "Id", "Id", appointmentSchedule.StayParticipationId);
-            ViewData["TherapistId"] = new SelectList(_context.Therapist, "Id", "FirstName", appointmentSchedule.TherapistId);
+            ViewData["TherapistId"] = new SelectList(_context.Therapist, "Id", "FullName", appointmentSchedule.TherapistId);
             ViewData["TreatmentId"] = new SelectList(_context.TreatmentCatalog, "Id", "Name", appointmentSchedule.TreatmentId);
             return View(appointmentSchedule);
         }

@@ -17,7 +17,8 @@ namespace PhysioHub.Intranet.Controllers.Dictionaries
         // GET: Specializations
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Specialization.ToListAsync());
+            return View(await _context.Specialization.Where(p => p.IsActive == true)
+                                   .ToListAsync());
         }
 
         // GET: Specializations/Details/5

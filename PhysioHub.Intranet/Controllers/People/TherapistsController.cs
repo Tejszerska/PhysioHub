@@ -19,7 +19,8 @@ namespace PhysioHub.Intranet.Controllers.People
         public async Task<IActionResult> Index()
         {
             var physioHubContext = _context.Therapist.Include(t => t.Specialization);
-            return View(await physioHubContext.ToListAsync());
+            return View(await physioHubContext.Where(p => p.IsActive == true)
+                                   .ToListAsync());
         }
 
         // GET: Therapists/Details/5

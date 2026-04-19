@@ -17,7 +17,8 @@ namespace PhysioHub.Intranet.Controllers.Dictionaries
         // GET: TreatmentCatalogs
         public async Task<IActionResult> Index()
         {
-            return View(await _context.TreatmentCatalog.ToListAsync());
+            return View(await _context.TreatmentCatalog.Where(p => p.IsActive == true)
+                                   .ToListAsync());
         }
 
         // GET: TreatmentCatalogs/Details/5
