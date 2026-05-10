@@ -70,6 +70,12 @@ namespace PhysioHub.Data.Data
             return base.SaveChangesAsync(cancellationToken);
         }
 
-
+        // saves enum as name instead of number in database
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<AppointmentSchedule>()
+                .Property(e => e.Status)
+                .HasConversion<string>(); 
+        }
     }
 }

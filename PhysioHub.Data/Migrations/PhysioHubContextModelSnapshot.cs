@@ -303,8 +303,7 @@ namespace PhysioHub.Data.Migrations
 
                     b.Property<string>("Status")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("StayParticipationId")
                         .HasColumnType("int");

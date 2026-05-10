@@ -88,7 +88,7 @@
                                 <td>@item.Therapist?.FirstName @item.Therapist?.LastName</td>
                                 <td><span class="badge bg-light text-dark border">@item.Room?.RoomNumber</span></td>
                                 <td>
-                                    <span class="badge @(item.Status == "Completed" ? "bg-success" : "bg-secondary")">
+                                    <span class="badge @(item.Status.ToString() == "Completed" ? "bg-success" : "bg-secondary")">
                                         @item.Status
                                     </span>
                                 </td>

@@ -1,6 +1,7 @@
 ﻿using PhysioHub.Data.Data.Base;
 using PhysioHub.Data.Data.Dictionaries;
 using PhysioHub.Data.Data.People;
+using PhysioHub.Data.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -41,8 +42,7 @@ namespace PhysioHub.Data.Data.Scheduling
         public required DateTime StartDateTime { get; set; }
 
         [Required]
-        [MaxLength(20)]
-        public required string Status { get; set; }
+        public AppointmentStatus Status { get; set; } = AppointmentStatus.Scheduled;
 
         [Display(Name = "Stay (Optional)")]
         public int? StayParticipationId { get; set; }

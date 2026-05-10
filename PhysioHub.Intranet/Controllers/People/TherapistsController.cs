@@ -54,7 +54,7 @@ namespace PhysioHub.Intranet.Controllers.People
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FirstName,LastName,LicenseNumber,SpecializationId,PhotoLink,Id,CreatedAt,UpdatedAt,IsActive")] Therapist therapist)
+        public async Task<IActionResult> Create([Bind("FirstName,LastName,LicenseNumber,SpecializationId,Id,CreatedAt,UpdatedAt,IsActive")] Therapist therapist)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace PhysioHub.Intranet.Controllers.People
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("FirstName,LastName,LicenseNumber,SpecializationId,PhotoLink,Id,CreatedAt,UpdatedAt,IsActive")] Therapist therapist)
+        public async Task<IActionResult> Edit(int id, [Bind("FirstName,LastName,LicenseNumber,SpecializationId,Id,CreatedAt,UpdatedAt,IsActive")] Therapist therapist)
         {
             if (id != therapist.Id)
             {
