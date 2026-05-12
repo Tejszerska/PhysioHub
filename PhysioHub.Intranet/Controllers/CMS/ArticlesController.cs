@@ -50,7 +50,7 @@ namespace PhysioHub.Intranet.Controllers.CMS
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LinkTitle,Title,Content,Position,Id,CreatedAt,UpdatedAt,IsActive")] Article article)
+        public async Task<IActionResult> Create([Bind("LinkTitle,Title,Content,Position,Id,CreatedAt,UpdatedAt,IsActive,PublishedAt,ShortDescription")] Article article)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace PhysioHub.Intranet.Controllers.CMS
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("LinkTitle,Title,Content,Position,Id,CreatedAt,UpdatedAt,IsActive")] Article article)
+        public async Task<IActionResult> Edit(int id, [Bind("LinkTitle,Title,Content,Position,Id,CreatedAt,UpdatedAt,IsActive,PublishedAt,ShortDescription")] Article article)
         {
             if (id != article.Id)
             {

@@ -23,6 +23,14 @@ namespace PhysioHub.Data.Data.CMS
 
 
         [Required(ErrorMessage = "Position is required")]
-        public required int Position { get; set; } // position in the menu ?
+        public required int Position { get; set; }
+
+        [Required(ErrorMessage = "Date of publishing is required")]
+        public required DateTime PublishedAt { get; set; }
+
+        [Required(ErrorMessage = "Short description is required")]
+        [MaxLength(100, ErrorMessage = "Short description cannot be longer than 100 characters")]
+        public required string ShortDescription { get; set; }
+
     }
 }

@@ -26,7 +26,6 @@ namespace PhysioHub.Data.Data
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
-            // Pobierz WSZYSTKIE śledzone zmiany (bez odrzucania Deleted)
             var entries = ChangeTracker.Entries();
 
             foreach (var entityEntry in entries)

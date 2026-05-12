@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PhysioHub.Data.Data;
 
@@ -11,9 +12,11 @@ using PhysioHub.Data.Data;
 namespace PhysioHub.Data.Migrations
 {
     [DbContext(typeof(PhysioHubContext))]
-    partial class PhysioHubContextModelSnapshot : ModelSnapshot
+    [Migration("20260511162605_AddPublishedAtToArticles")]
+    partial class AddPublishedAtToArticles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,11 +53,6 @@ namespace PhysioHub.Data.Migrations
 
                     b.Property<DateTime>("PublishedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("ShortDescription")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Title")
                         .IsRequired()

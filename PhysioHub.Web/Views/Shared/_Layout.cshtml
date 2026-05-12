@@ -22,29 +22,8 @@
                             aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-@*                       @await Html.PartialAsync("NavbarLinks", (IEnumerable<PhysioHub.Data.Data.CMS.Website>)ViewBag.WebsiteModel) 
- *@                
-                    <div class="navbar-collapse collapse d-lg-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1">
-                            
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Offer">
-                           Offer
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="OurTeam">
-                            Our Team
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contact">
-                            Contact
-                        </a>
-                    </li>
-                    </ul>
-                    </div>
-</div>
+                       @await Html.PartialAsync("NavbarLinks", (IEnumerable<PhysioHub.Data.Data.CMS.Website>)ViewBag.WebsiteModel) 
+
             </nav>
         </header>
             
@@ -54,7 +33,9 @@
         </main>
     </div>
 
-        <footer class="physio-bg-alt border-top mt-auto py-5">
+        @await Html.PartialAsync("ArticlesMinis", (IEnumerable<PhysioHub.Data.Data.CMS.Article>)ViewBag.ArticleMiniModel)
+
+        <footer class="border-top mt-auto pt-3">
             <div class="container">
                 <div class="row g-4">
                     <div class="col-md-4">
@@ -89,15 +70,7 @@
                         </ul>
                     </div>
                 </div>
-
-                <div class="border-top mt-4 pt-4 text-center">
-                    <p class="text-muted small mb-0">
-                        &copy; @DateTime.Now.Year <span class="fw-bold">PhysioHub</span>. All rights reserved.
-                    </p>
                 </div>
-            </div>
-        </footer>
-         
         </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

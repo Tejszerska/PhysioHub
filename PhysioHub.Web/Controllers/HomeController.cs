@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using PhysioHub.Data.Data;
 using PhysioHub.Web.Models;
 using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
 
 namespace PhysioHub.Web.Controllers
 {
@@ -15,15 +16,13 @@ namespace PhysioHub.Web.Controllers
         }
         public async Task<IActionResult> Index(int? id)
         {
-            ViewBag.WebsiteModel=
-                (
-                from website in _context.Website
-                orderby website.Position
-                select website
-                ).ToList();
+            ViewBag.WebsiteModel = await _context.Website.OrderBy(w => w.Position).ToListAsync();
+
+            ViewBag.ArticleMiniModel = await _context.Article.OrderByDescending(a => a.PublishedAt).Take(3).ToListAsync();
 
             if (id == null) id = 1; 
             var item= await _context.Website.FindAsync(id);
+
             return View(item);
         }
 
@@ -32,24 +31,7 @@ namespace PhysioHub.Web.Controllers
             return View();
         }
 
-        // ========= for 1st laboratory ===========
-        public IActionResult Offer()
-        {
-            return View();
-        }
-
-        public IActionResult OurTeam()
-        {
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            return View();
-        }
-
-
-
+       
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
