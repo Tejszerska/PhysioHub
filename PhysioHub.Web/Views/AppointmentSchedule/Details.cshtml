@@ -1,0 +1,69 @@
+﻿@model IEnumerable<PhysioHub.Data.Data.Scheduling.AppointmentSchedule>
+
+@{
+    ViewData["Title"] = "Your Appointments";
+    Layout = "~/Views/Shared/_LayoutAppointments.cshtml";
+}
+
+<div class="container my-5">
+    
+    <div class="text-center mb-5">
+        <h2 class="fw-bold ">Your Treatment Schedule</h2>
+        <p class="text-muted">Appointments for PESEL: <strong>@ViewBag.PatientPesel</strong></p>
+    </div>
+
+    <div class="row">
+        @foreach (var appointment in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm border-0">
+                    
+                    <div class="card-header physio-navbar text-white text-center py-3 border-0">
+                        <i class="bi bi-clock fs-4 d-block mb-1"></i>
+                        <h3 class="mb-0 fw-bold">@appointment.StartDateTime.ToString("HH:mm")</h3>
+                        <p class="text-white-50 text-uppercase fw-bold">
+                            @appointment.StartDateTime.ToString("dd.MM.yyyy")
+                        </p>
+                    </div>
+
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold text-center mb-4">
+                            @appointment.Treatment.Name
+                        </h5>
+                        
+                        <div class="card-text text-muted small mb-4">
+                            <div class="d-flex mb-2">
+                                <i class="bi bi-person-badge me-2 fs-5"></i>
+                                <div>
+                                    <strong class="d-block text-dark">Therapist</strong>
+                                    @appointment.Therapist.FullName
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex">
+                                <i class="bi bi-geo-alt me-2 fs-5"></i>
+                                <div>
+                                    <strong class="d-block text-dark">Location</strong>
+                                    Room: @appointment.Room.RoomNumber
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-auto text-center border-top pt-3">
+                            <span class="badge bg-success px-3 py-2 rounded-pill">
+                                @appointment.Status
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="text-center mt-4">
+        <a asp-action="Search" class="btn btn-secondary px-4">
+            <i class="bi bi-arrow-left me-2"></i> Check Another PESEL
+        </a>
+    </div>
+
+</div>

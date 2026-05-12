@@ -1,8 +1,11 @@
 ﻿@model IEnumerable<PhysioHub.Data.Data.CMS.Website>
 
-<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">    
     <ul class="navbar-nav flex-grow-1">
-        
+        <li class="nav-item ">
+            <a class="btn btn-secondary btn px-2 shadow mx-2" asp-area="" asp-controller="AppointmentSchedule" asp-action="Search">Check Schedule</a>
+        </li>
+
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="" asp-controller="Therapists" asp-action="Index">Our Team</a>
         </li>
@@ -41,8 +44,9 @@
         }
 
         <li class="nav-item">
-            <a class="nav-link text-dark fw-bold" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+            <a class="nav-link text-dark " asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
         </li>
+
 
     </ul>
 </div>

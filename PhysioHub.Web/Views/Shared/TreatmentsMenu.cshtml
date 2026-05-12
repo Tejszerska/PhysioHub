@@ -1,0 +1,18 @@
+﻿@model IEnumerable<PhysioHub.Data.Data.Dictionaries.TreatmentCatalog>
+
+<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+    <ul class="navbar-nav flex-grow-1">
+       
+                    @foreach (var treatment in Model)
+                    {
+                        <li>
+                <a class="dropdown-item" asp-area="" asp-controller="AppointmentSchedule" asp-action="Details" asp-route-id="@treatment.Id">
+                                @treatment.Name
+                            </a>
+                        </li>
+                    }
+                </ul>
+
+        }
+    
+</div>

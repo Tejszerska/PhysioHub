@@ -249,3 +249,13 @@ a {
     font-weight: bold;
     font-size: 0.8rem;
 }
+
+/* Other */
+
+.green-bg {
+    background-color: var(--physio-bg-main) !important;
+}
+
+.green-fg {
+    background-color: var(--physio-bg-main) !important;
+}
