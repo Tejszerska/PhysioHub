@@ -1,42 +1,44 @@
-﻿@model PhysioHub.Data.Data.CMS.Article
+﻿@model IEnumerable<PhysioHub.Data.Data.CMS.Article>
 
 @{
-    ViewData["Title"] = Model.Title;
+    ViewData["Title"] = "All Articles";
 }
 
 <div class="container my-2">
     <div class="row justify-content-center">
         <div class="col-lg-8 col-md-10">
+
+    @foreach (var article in Model)
+    {
             
-            <div class="mb-4">
-                <a asp-controller="Home" asp-action="Index" class="text-decoration-none fw-bold text-primary">
-                    &larr; Back
-                </a>
-            </div>
-
-            <header class="mb-4">
-                <span class="text-muted fw-bold small text-uppercase">
-                    @Model.PublishedAt.ToString("dd.MM.yyyy")
-                </span>
-                <h1 class="fw-bolder mb-3 mt-2">@Model.Title</h1>
+                <header class="mb-4">
+                    <span class="text-muted fw-bold small text-uppercase">
+                        @article.PublishedAt.ToString("dd.MM.yyyy")
+                    </span>
+                    <h1 class="fw-bolder mb-3 mt-2">@article.Title</h1>
                 
-                <p class="lead text-muted">
-                    @Model.ShortDescription
-                </p>
-            </header>
+                    <p class="lead text-muted">
+                        @article.ShortDescription
+                    </p>
+                </header>
 
-            <figure class="mb-5">
-                <img src="~/img/articles/article-@(Model.Id).jpg"
-                     class="img-fluid rounded shadow-sm w-100"
-                     style="max-height: 500px; object-fit: cover;"
-                     alt="@Model.Title">
-            </figure>
+                <figure class="mb-5">
+                    <img src="~/img/articles/article-@(article.Id).jpg"
+                         class="img-fluid rounded shadow-sm w-100"
+                         style="max-height: 500px; object-fit: cover;"
+                         alt="@article.Title">
+                </figure>
 
-            <section class=" fs-5" style="line-height: 1.8;">
+                <section class="fs-5" style="line-height: 1.8;">
                
-                <div style="{white-space: pre-wrap;}">@Model.Content
-                </div>
-            </section>
+                    <div style="{white-space: pre-wrap;}">
+                        @article.Content
+                    </div>
+                </section>
+
+                <hr />
+    }   
+
 
         </div>
     </div>

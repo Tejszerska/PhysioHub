@@ -19,7 +19,7 @@
                         <span class="news-date">@article.PublishedAt.ToString("dd.MM.yyyy")</span>
                         <h5 class="card-title mt-2"> @article.Title </h5>
                         <p class="card-text text-muted small">@article.ShortDescription</p>
-                        <a class="fw-bold"  asp-area="" asp-controller="Articles" asp-action="Index" asp-route-id="@article.Id"
+                        <a class="fw-bold"  asp-area="" asp-controller="Articles" asp-action="Details" asp-route-id="@article.Id"
                         >Read more</a>
                     </div>
                 </div>
@@ -28,7 +28,9 @@
 
         </div>
         <div class="text-center mb-3">
-            <a href="#" class="text-decoration-none fw-bold">View all posts <i class="bi bi-arrow-right"></i></a>
+
+            <a class="nav-link text-dark" asp-area="" asp-controller="Articles" asp-action="Index">View all posts <i class="bi bi-arrow-right"> </i></a>
+
         </div>
     </div>
 </section>

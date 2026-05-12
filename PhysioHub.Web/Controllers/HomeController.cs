@@ -26,8 +26,12 @@ namespace PhysioHub.Web.Controllers
             return View(item);
         }
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> Contact()
         {
+
+            ViewBag.WebsiteModel = await _context.Website.OrderBy(w => w.Position).ToListAsync();
+
+            ViewBag.ArticleMiniModel = await _context.Article.OrderByDescending(a => a.PublishedAt).Take(3).ToListAsync();
             return View();
         }
 

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<PhysioHub.Data.Data.People.Therapist>
+
+@{
+    ViewData["Title"] = "Therapists";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="text-center mb-3">
+        <h2 class="physio-text-primary mb-0">Meet our team!</h2>
+    </div>
+    <div class="row">
+
+        @foreach (var therapist in Model)
+        {
+            <div class="col-12 col-md-4 mb-4">
+                <div class="card h-100 shadow-sm news-card border-0 physio-bg-alt text-center p-3">
+                    <img src="~/img/therapists/portrait-@(therapist.Id).jpg" class="rounded-circle mx-auto d-block mt-3" alt="@therapist.FullName">
+                    <div class="card-body">
+                        <h5 class="card-title mt-2">@therapist.FullName</h5>
+                        <p class="card-text">
+                            @(therapist.Specialization?.Name ?? "No specialization")
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

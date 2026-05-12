@@ -1,0 +1,48 @@
+﻿@model IEnumerable<PhysioHub.Data.Data.Dictionaries.TreatmentCatalog>
+
+@{
+    ViewData["Title"] = "Treatment Catalog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="py-5">
+    <div class="container">
+        <div class="mb-4">
+            <h1 class="physio-text-primary fw-bold">Comprehensive Care</h1>
+            <p class="lead text-muted">Discover our specialized treatments designed for your recovery.</p>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-hover border">
+                <thead class="table-light">
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Name)</th>
+                        <th>@Html.DisplayNameFor(model => model.DurationMinutes)</th>
+                        <th>@Html.DisplayNameFor(model => model.Price)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="fw-bold text-dark">@item.Name</td>
+                            <td>@item.DurationMinutes min</td>
+                            <td>
+                                @if (item.Price.HasValue)
+                                {
+                                    @item.Price.Value.ToString("0.00")
+                                    <span> PLN</span>
+                                }
+                                else
+                                {
+                                    <span class="text-muted">N/A</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,17 @@
+﻿@model PhysioHub.Data.Data.CMS.Website
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <h1 class="display-4 fw-bold mb-4 ">@Model.Title</h1>
+            
+            <hr />
+
+            <div class="fs-5 text-dark" style="white-space: pre-wrap;">@Model.Content</div>
+        </div>
+    </div>
+</div>
