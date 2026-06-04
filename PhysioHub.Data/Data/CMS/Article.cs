@@ -22,9 +22,6 @@ namespace PhysioHub.Data.Data.CMS
         public required string Content { get; set; }
 
 
-        [Required(ErrorMessage = "Position is required")]
-        public required int Position { get; set; }
-
         [Required(ErrorMessage = "Date of publishing is required")]
         public required DateTime PublishedAt { get; set; }
 

@@ -14,7 +14,6 @@ namespace PhysioHub.Web.Controllers
             _context = context;
         }
 
-        [HttpGet]
         public async Task<IActionResult> Search()
         {
             ViewBag.WebsiteModel = await _context.Website.OrderBy(w => w.Position).ToListAsync();

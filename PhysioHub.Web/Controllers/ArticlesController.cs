@@ -20,7 +20,7 @@ namespace PhysioHub.Web.Controllers
             ViewBag.ArticleMiniModel = await _context.Article.OrderByDescending(a => a.PublishedAt).Take(3).ToListAsync();
 
 
-            var item = await _context.Article.ToListAsync();
+            var item = await _context.Article.OrderByDescending(a => a.PublishedAt).ToListAsync();
             if (item == null) return NotFound();
             return View(item);
         }

@@ -45,9 +45,6 @@ namespace PhysioHub.Data.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<int>("Position")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("PublishedAt")
                         .HasColumnType("datetime2");
 
