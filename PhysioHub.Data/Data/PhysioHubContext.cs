@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using PhysioHub.Data.Data.CMS;
 using PhysioHub.Data.Data.Dictionaries;
 using PhysioHub.Data.Data.People;
@@ -6,7 +8,7 @@ using PhysioHub.Data.Data.Scheduling;
 
 namespace PhysioHub.Data.Data
 {
-    public class PhysioHubContext : DbContext
+    public class PhysioHubContext : IdentityDbContext<IdentityUser>
     {
         public PhysioHubContext(DbContextOptions<PhysioHubContext> options)
             : base(options)
@@ -72,6 +74,7 @@ namespace PhysioHub.Data.Data
         // saves enum as name instead of number in database
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder); // base configuration for IdentityDbContext
             modelBuilder.Entity<AppointmentSchedule>()
                 .Property(e => e.Status)
                 .HasConversion<string>(); 

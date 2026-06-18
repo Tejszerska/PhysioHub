@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using PhysioHub.Data.Data;
+using QuestPDF.Infrastructure;
 
+QuestPDF.Settings.License = LicenseType.Community;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<PhysioHubContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("PhysioHubContext")));
 

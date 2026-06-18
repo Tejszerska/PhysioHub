@@ -4,12 +4,24 @@
     ViewData["Title"] = "Your Appointments";
     Layout = "~/Views/Shared/_LayoutAppointments.cshtml";
 }
-
 <div class="container my-5">
-    
-    <div class="text-center mb-5">
-        <h2 class="fw-bold ">Your Treatment Schedule</h2>
-        <p class="text-muted">Appointments for PESEL: <strong>@ViewBag.PatientPesel</strong></p>
+
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-5 border-bottom pb-3">
+
+        <div class="text-center text-md-start mb-3 mb-md-0">
+            <h2 class="fw-bold mb-1">Your Treatment Schedule</h2>
+            <p class="text-muted mb-0">Appointments for PESEL: <strong>@ViewBag.PatientPesel</strong></p>
+        </div>
+
+        <div>
+            <form asp-action="DownloadSchedulePdf" method="post" class="m-0">
+                <input type="hidden" name="pesel" value="@ViewBag.PatientPesel" />
+                <button type="submit" class="btn btn-outline-secondary btn-lg shadow-sm">
+                    <i class="bi bi-file-earmark-pdf-fill me-1"></i> Download PDF
+                </button>
+            </form>
+        </div>
+
     </div>
 
     <div class="row">

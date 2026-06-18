@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PhysioHub.Data.Data;
 using PhysioHub.Data.Data.CMS;
 
 namespace PhysioHub.Intranet.Controllers.CMS
 {
+    [Authorize(Roles = "Admin, User")]
     public class ArticlesController : Controller
     {
         private readonly PhysioHubContext _context;

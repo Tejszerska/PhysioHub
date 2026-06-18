@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "Intranet Login";
+}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+
+            <div class="card border-1 rounded-4 shadow-sm">
+                <div class="card-body p-5 text-center">
+
+                    <h3 class="fw-bold mb-3">PhysioHub Admin</h3>
+                    <p class="mb-4 text-muted">
+                        Enter your credentials to access the Intranet management panel.
+                    </p>
+
+                    <form asp-action="Login" method="post" class="text-start">
+
+                        <div class="mb-3 row align-items-center">
+                            <label for="email" class="col-sm-3 col-form-label small fw-bold">Email</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <input type="email" id="email" name="email" class="form-control form-control-lg" required placeholder="admin@physiohub.com">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-4 row align-items-center">
+                            <label for="password" class="col-sm-3 col-form-label small fw-bold">Password</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <input type="password" id="password" name="password" class="form-control form-control-lg" required placeholder="••••••••">
+                                </div>
+                            </div>
+                        </div>
+
+                        @if (ViewBag.Error != null)
+                        {
+                            <div class="alert alert-danger d-flex align-items-center small py-2" role="alert">
+                                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                                <div>@ViewBag.Error</div>
+                            </div>
+                        }
+
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg fw-bold shadow-sm">
+                                Sign In
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <p class="text-muted small">
+                    Authorized personnel only. <br>
+                    Contact IT Support: <strong>admin@physiohub.com</strong>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
