@@ -17,15 +17,19 @@
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" asp-area="" asp-controller="Home" asp-action="Index">
                     <img src="~/img/logo-web.png" alt="PhysioHub Logo" height="40" class="me-2 d-inline-block align-top" onerror="this.style.display='none'">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                       @await Html.PartialAsync("NavbarLinks", (IEnumerable<PhysioHub.Data.Data.CMS.Website>)ViewBag.WebsiteModel) 
+                </a>
 
-            </nav>
-        </header>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse d-lg-inline-flex justify-content-between" id="navbarMenu">
+                    @await Html.PartialAsync("NavbarLinks", (IEnumerable<PhysioHub.Data.Data.CMS.Website>)ViewBag.WebsiteModel)
+                </div>
+            </div>
+        </nav>
+    </header>
             
     <div class="container">
         <main role="main" class="pb-3">
