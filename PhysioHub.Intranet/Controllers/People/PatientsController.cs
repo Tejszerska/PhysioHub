@@ -14,12 +14,22 @@ namespace PhysioHub.Intranet.Controllers.People
             _context = context;
         }
 
-        // GET: Patients
-        public async Task<IActionResult> Index()
+        // GET: Patients with optinal search functionality
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.Patient
-                                   .Where(p => p.IsActive == true)
-                                   .ToListAsync());
+              var patientsQuery = from p in _context.Patient
+                                select p;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                patientsQuery = patientsQuery.Where(p =>
+                    p.LastName.Contains(searchString) ||
+                    p.PESEL.Contains(searchString));
+            }
+
+            ViewData["CurrentFilter"] = searchString; // keep the search string in the view for display
+            
+            return View(await patientsQuery.ToListAsync());
         }
 
         // GET: Patients/Details/5
